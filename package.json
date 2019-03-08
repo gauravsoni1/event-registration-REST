@@ -6,7 +6,9 @@
   "scripts": {
     "test": "env-cmd ./config/test.env jest --watchAll",
     "start": "node app/server.js",
-    "dev": "env-cmd ./config/dev.env nodemon app/server.js"
+    "dev": "env-cmd ./config/dev.env nodemon app/server.js",
+    "docs": "apidoc -i app/ -o apidoc/",
+    "travis-test":"jest"
   },
   "jest": {
     "testEnvironment": "node"

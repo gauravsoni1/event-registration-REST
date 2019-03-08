@@ -1,6 +1,12 @@
 const Attendee = require('../models/attendee.model');
 
 exports.createAttendee = function(req,res,next){
+
+  if (!req.body.name){
+    res.status(400).send({"error":"Please enter a name"});
+    return next();
+  };
+
   let attendee = new Attendee({
     name:req.body.name,
     age:req.body.age,
