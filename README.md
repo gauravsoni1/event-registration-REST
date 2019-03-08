@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/gauravsoni1/event-registration-REST.svg?branch=master)](https://travis-ci.com/gauravsoni1/event-registration-REST)
+
 # Event Registration App
 
 ## Description

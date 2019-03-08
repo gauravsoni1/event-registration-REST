@@ -6,3 +6,7 @@ cache:
   - node_modules
 script:
   npm run travis-test
+deploy:
+  provider: heroku
+  api_key: $HEROKU_AUTH_TOKEN
+  app: event-regs
