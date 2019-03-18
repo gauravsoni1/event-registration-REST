@@ -1,0 +1,1 @@
+const USER_TYPE = ["founder","trustee","member","guest"];

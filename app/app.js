@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //Custom file
+const user = require('./routes/user.route');
 const attendee = require('./routes/attendee.route');
 
 const app = express();
+
 const mongoDB = process.env.MONGODB_URL || process.env.DB_URL;
 
 //Apply the middlewares
@@ -28,6 +30,7 @@ app.get('/',(req,res)=>{
   })
 });
 
+app.use('/user',user);
 app.use('/attendee',attendee);
 
 module.exports = app;

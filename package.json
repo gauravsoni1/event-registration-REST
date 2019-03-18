@@ -8,7 +8,7 @@
     "start": "node app/server.js",
     "dev": "env-cmd ./config/dev.env nodemon app/server.js",
     "docs": "apidoc -i app/ -o apidoc/",
-    "travis-test":"jest"
+    "travis-test": "jest"
   },
   "jest": {
     "testEnvironment": "node"
@@ -16,9 +16,12 @@
   "author": "Gaurav",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongoose": "^5.4.17"
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.17",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "env-cmd": "^8.0.2",
