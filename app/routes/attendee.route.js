@@ -7,4 +7,8 @@ router.post("/create",userMiddleware.validateToken, userController.createAttende
 
 router.get("/getAll",userMiddleware.validateToken, userController.getAllAttendee);
 
+router.post('/archive',userMiddleware.validateToken, userController.archiveUser);
+
+router.post('/update',userMiddleware.validateToken, userController.update);
+
 module.exports = router;

@@ -15,10 +15,12 @@ const UserSchema = new Schema({
   userType:{type:String,required:true},
   age:{type:Number},
   dateOfBirth:{type:Number},
+  familyMembers:[Schema.Types.ObjectId],
   occupation:{type:String},
   businessName:{type:String},
   joinDate:{type: Number},
   isActiveMembership:{type:Boolean},
+  isActive:{type:Boolean,default:true},
   membershipEnd:{type:Number},
   token:{
     id:String

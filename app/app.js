@@ -4,8 +4,12 @@ const mongoose = require('mongoose');
 //Custom file
 const user = require('./routes/user.route');
 const attendee = require('./routes/attendee.route');
+const event = require('./routes/event.route');
+
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 const mongoDB = process.env.MONGODB_URL || process.env.DB_URL;
 
@@ -16,6 +20,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //Initialize MongoDB
 
 mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify',false);
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
@@ -32,5 +37,6 @@ app.get('/',(req,res)=>{
 
 app.use('/user',user);
 app.use('/attendee',attendee);
+app.use('/event',event);
 
 module.exports = app;

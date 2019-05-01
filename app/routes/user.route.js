@@ -3,7 +3,7 @@ const router = express.Router();
 const userMiddleware = require('../middleware/user.middleware');
 const userController = require('../controllers/user.controller');
 
-router.post('/login',userMiddleware.validateUsernamePassword ,userController.login);
+router.post('/login',userMiddleware.validateUsernamePassword,userMiddleware.addCORS ,userController.login);
 
 //Used to signup a administrator
 router.post('/signup',userMiddleware.isUserExist,userController.signup);

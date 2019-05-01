@@ -1,6 +1,6 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 var UserMiddleware = {};
 
@@ -27,9 +27,11 @@ UserMiddleware.validateUsernamePassword = (req, res, next) => {
       return bcrypt.compare(req.body.password, data[0].password);
     })
     .then(data => {
-      if(data === false){
+      if (data === false) {
         return res.status(400).send("Wrong username or password");
       }
+      //TODO: Remove this later
+      res.setHeader("Access-Control-Allow-Origin", "*");
       next();
     })
     .catch(err => {
@@ -39,17 +41,24 @@ UserMiddleware.validateUsernamePassword = (req, res, next) => {
 
 //Validate the token if its valid
 
-UserMiddleware.validateToken = (req,res,next) =>{
-  if(!req.body.token){
+UserMiddleware.validateToken = (req, res, next) => {
+  if (!req.body.token) {
     return res.status(401).send("Unauthorized");
   }
-  jwt.verify(req.body.token,process.env.JWT_SECRET,(err,decodedToken)=>{
-    if (err){
+  jwt.verify(req.body.token, process.env.JWT_SECRET, (err, decodedToken) => {
+    if (err) {
       return res.status(401).send("Unauthorized");
     }
+    //TODO: Remove this later
+    res.setHeader("Access-Control-Allow-Origin", "*");
     req.userData = decodedToken;
     next();
-  })
-}
+  });
+};
+
+UserMiddleware.addCORS = (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+};
 
 module.exports = UserMiddleware;
