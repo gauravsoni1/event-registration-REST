@@ -4,6 +4,14 @@ const validator = require('validator');
 
 
 const UserSchema = new Schema({
+  salutation:{type:String},
+  firstName:{type:String},
+  lastName:{type:String},
+  mobileNumber:{type:Number},
+  uaeState:{type:String},
+  indiaState:{type:String},
+  emiratesID:{type:Number},
+  selfEmployed:{type:Boolean,default:false},
   username:{type:String,required:true},
   password:{type:String,required:true},
   email:{type:String,validate:{
@@ -13,11 +21,10 @@ const UserSchema = new Schema({
     message:(props)=>{return "Entered email is invalid"}
   }},
   userType:{type:String,required:true},
-  age:{type:Number},
   dateOfBirth:{type:Number},
   familyMembers:[Schema.Types.ObjectId],
-  occupation:{type:String},
-  businessName:{type:String},
+  designation:{type:String},
+  companyName:{type:String},
   joinDate:{type: Number},
   isActiveMembership:{type:Boolean},
   isActive:{type:Boolean,default:true},

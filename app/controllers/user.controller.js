@@ -33,6 +33,7 @@ exports.createAttendee = function(req, res, next) {
 };
 
 exports.getAllAttendee = function(req, res) {
+  console.log(req.body);
   User.find({}, function(err, user) {
     res.send(user);
   });
@@ -104,7 +105,6 @@ exports.update = (req, res) => {
   } else {
     const updatedUser = {
       username: req.body.username,
-      age: req.body.age,
       dateOfBirth: req.body.dateOfBirth,
       occupation: req.body.occupation,
       businessName: req.body.businessName,

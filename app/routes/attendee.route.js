@@ -5,7 +5,7 @@ const userController = require('../controllers/user.controller');
 
 router.post("/create",userMiddleware.validateToken, userController.createAttendee);
 
-router.get("/getAll",userMiddleware.validateToken, userController.getAllAttendee);
+router.get("/getAll", userController.getAllAttendee);
 
 router.post('/archive',userMiddleware.validateToken, userController.archiveUser);
 
